@@ -406,7 +406,7 @@ def computer_make_a_move(board, dificulty, player_color):
         return board 
 
 #=====================New Game=======================
-def new_game(print_format = "ascii", player_color = "white"):
+def new_game(print_format = "ascii", player_color = "white", notation = "SAN"):
     game = True
     board = create_board()
     coordinates = True
@@ -509,14 +509,43 @@ def choose_color_side():
     return player_color
 
 def options_menu():
-    choice = input("1. Dificulty\n2. Sound\n3. Coordinates\n4. Board\n5. Return")
+    choice = input("1. Dificulty\n2. Sound\n3. Coordinates\n4. Board\n5. Notation\n6. Return\n")
     match choice:
         case 1:
             new_game("ascii", player_color=choose_color_side())
         case 2:
             options_menu()
         case 3:
-            sys.exit(0)       
+            sys.exit(0)
+        case 4:
+            sys.exit(0)
+        case 5:
+            choose_notation()
+        case 6:
+            menu()
+
+def choose_notation():
+    choice = input("1. Standard Algebraic Notation\n2. Long Algebraic Notation\n3. Coordinate\n4. Return\n")
+    match choice:
+        case 1:
+            change_notation("SAN")
+        case 2:
+            change_notation("LAN")
+        case 3:
+            change_notation("coordinate")
+        case 4:
+            options_menu()
+
+def change_notation(notation):
+    if notation == "SAN":
+        pass
+    elif notation == "LAN":
+        pass
+    elif notation == "coordinate":
+        pass
+    else:
+        pass
+    options_menu()
 
 def menu():
     os.system('cls' if os.name == 'nt' else 'clear')
